@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frontend Playground</title>
+    <link rel="stylesheet" href="./codemirror-5.42.0/lib/codemirror.css">
+    <link rel="stylesheet" href="./app.css">
+    <script src="./codemirror-5.42.0/lib/codemirror.js"></script>
+    <script src="./jquery/xml.js"></script>
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./jquery/jquery.base64.min.js"></script>
+</head>
+
+<body>
+    <div class="topbar">
+        <button class="runBtn" onclick="submit_html()">
+            <span>Run</span>
+            <img src="./assets/play.png" />
+        </button>
+        <button class="themeBtn tooltip" onclick="changeTheme('black')">
+            <img src="./assets/themeBlack.png" width="24px" height="24px" />
+            <span class="tooltiptext">Black Theme</span>
+        </button>
+        <button class="themeBtnwhite tooltip" onclick="changeTheme('white')">
+            <img src="./assets/themeWhite.png" width="24px" height="24px" />
+            <span class="tooltiptext">White Theme</span>
+
+        </button>
+    </div>
+    <div class="editor-container" id="mainContainer">
+        <div class="textareacontainer">
+            <div class="textarea">
+                <div class="textareawrapper" id="textareawrapper">
+                    <textarea name="editor" id="editor">
+<!DOCTYPE html>
+<html>
+
+<body>
+</body>
+
+</html>
+
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="iframecontainer">
+            <div class="iframe">
+                <div class="iframewrapper">
+                    <iframe id="result" class="iframeResult"></iframe>
+
+                </div>
+
+            </div>
+        </div>
+</body>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        lineNumbers: true,
+        mode: "xml"
+    });
+
+    function submit_html() {
+        editor.save();
+        var code = document.getElementById("editor").value;
+        var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+        document.getElementById("result").src = data_url;
+    }
+
+    function changeTheme(color) {
+       if(color === 'black'){
+        var background = document.getElementsByClassName('CodeMirror-scroll');
+        for (var i = 0; i < background.length; i++) {
+            background[i].style["background-color"] = 'rgb(40, 44, 52)';
+        }
+        var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
+        for (var i = 0; i < lineNumbers.length; i++) {
+            lineNumbers[i].style["background-color"] = "rgb(40, 44, 52)";
+        }
+        document.getElementById('mainContainer').className = 'editor-container-black'
+        document.getElementById('textareawrapper').className = 'textareawrapperBlack';
+       } 
+       else {
+        var background = document.getElementsByClassName('CodeMirror-scroll');
+        for (var i = 0; i < background.length; i++) {
+            background[i].style["background-color"] = '#ffffff';
+        }
+        var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
+        for (var i = 0; i < lineNumbers.length; i++) {
+            lineNumbers[i].style["background-color"] = "#ffffff";
+        }
+        document.getElementById('mainContainer').className = 'editor-container'
+        document.getElementById('textareawrapper').className = 'textareawrapper';
+       }
+    }
+</script>
+
+</html>
