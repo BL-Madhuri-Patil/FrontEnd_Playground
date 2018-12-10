@@ -72,31 +72,30 @@
     }
 
     function changeTheme(color) {
-       if(color === 'black'){
-        var background = document.getElementsByClassName('CodeMirror-scroll');
-        for (var i = 0; i < background.length; i++) {
-            background[i].style["background-color"] = 'rgb(40, 44, 52)';
+        if (color === 'black') {
+            var background = document.getElementsByClassName('CodeMirror-scroll');
+            for (var i = 0; i < background.length; i++) {
+                background[i].style["background-color"] = 'rgb(40, 44, 52)';
+            }
+            var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
+            for (var i = 0; i < lineNumbers.length; i++) {
+                lineNumbers[i].style["background-color"] = "rgb(40, 44, 52)";
+            }
+            document.getElementById('mainContainer').className = 'editor-container-black'
+            document.getElementById('textareawrapper').className = 'textareawrapperBlack';
         }
-        var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
-        for (var i = 0; i < lineNumbers.length; i++) {
-            lineNumbers[i].style["background-color"] = "rgb(40, 44, 52)";
+        else {
+            var background = document.getElementsByClassName('CodeMirror-scroll');
+            for (var i = 0; i < background.length; i++) {
+                background[i].style["background-color"] = '#ffffff';
+            }
+            var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
+            for (var i = 0; i < lineNumbers.length; i++) {
+                lineNumbers[i].style["background-color"] = "#ffffff";
+            }
+            document.getElementById('mainContainer').className = 'editor-container'
+            document.getElementById('textareawrapper').className = 'textareawrapper';
         }
-        document.getElementById('mainContainer').className = 'editor-container-black'
-        document.getElementById('textareawrapper').className = 'textareawrapperBlack';
-       } 
-       else {
-        var background = document.getElementsByClassName('CodeMirror-scroll');
-        for (var i = 0; i < background.length; i++) {
-            background[i].style["background-color"] = '#ffffff';
-        }
-        var lineNumbers = document.getElementsByClassName('CodeMirror-gutter');
-        for (var i = 0; i < lineNumbers.length; i++) {
-            lineNumbers[i].style["background-color"] = "#ffffff";
-        }
-        document.getElementById('mainContainer').className = 'editor-container'
-        document.getElementById('textareawrapper').className = 'textareawrapper';
-       }
     }
 </script>
-
 </html>

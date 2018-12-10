@@ -28,7 +28,10 @@ body {
     height: 100%;
     width: 49.50%;
 }
-
+.iframecontainer {
+    resize: horizontal;
+    cursor: col-resize;
+}
 .editor-container {
     background-color: #f1f1f1;
     width: 100%;
@@ -69,12 +72,16 @@ body {
     -webkit-overflow-scrolling: touch;
     background-color: #ffffff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    resize: horizontal;
+    cursor: col-resize;
 }
 .iframeResult {
     background-color: #ffffff;
     height: 100%;
     width: 100%;
     border-width: 0px;
+    resize: horizontal;
+    cursor: col-resize; 
 }
 .runBtn {
     color: #fff!important;
